@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://ontology.commonapproach.org/sff-1.0"
+     xml:base="https://ontology.commonapproach.org/sff-1.0"
+     xmlns:cids="https://ontology.commonapproach.org/cids"
+     xmlns:sff="https://ontology.commonapproach.org/sff-1.0"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:ic="http://ontology.eil.utoronto.ca/tove/icontact#"
+     xmlns:act="http://ontology.eil.utoronto.ca/tove/activity#"
+     xmlns:dqv="http://www.w3.org/ns/dqv#"
+     xmlns:geo="http://www.geonames.org/ontology/ontology_v3.1.rdf#"
+     xmlns:i72="http://ontology.eil.utoronto.ca/ISO21972/iso21972#"
+     xmlns:oep="http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl#"
+     xmlns:org="http://ontology.eil.utoronto.ca/tove/organization#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rel="http://purl.org/vocab/relationship/"
+     xmlns:sch="http://schema.org/"
+     xmlns:sur="http://ontology.eil.utoronto.ca/tove/survey#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:adms="http://www.w3.org/ns/adms#"
+     xmlns:cwrc="http://sparql.cwrc.ca/ontologies/cwrc#"
+     xmlns:dcat="http://www.w3.org/ns/dcat#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:om-1="http://www.wurvoc.org/vocabularies/om-1.8/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://ontology.commonapproach.org/sff-1.0">
+        <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/ISO21972/iso21972.owl"/>
+        <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/tove/activity.owl"/>
+        <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/tove/icontact.owl"/>
+        <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/tove/organization.owl"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time.rdf"/>
+        <cc:license>Social Finance Fund Companion Module © 2023 by Common Approach to Impact Measurement is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/</cc:license>
+        <dcterms:creator rdf:resource="https://ontology.commonapproach.org/cids#ac"/>
+        <dcterms:description xml:lang="en">An Ontology for Representing Social Finance Fund Reporting Requirements</dcterms:description>
+        <dcterms:title xml:lang="en">Social Finance Fund Companion Module</dcterms:title>
+        <foaf:name xml:lang="en">Social Finance Fund Companion Module</foaf:name>
+        <vann:preferredNamespacePrefix>sff</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://ontology.commonapproach.org/sff-1.0#</vann:preferredNamespaceUri>
+        <dcterms:date>11-10-2024</dcterms:date>
+        <owl:versionInfo xml:lang="en">1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <owl:Class rdf:about="#OrganizationProfile">
+      <rdfs:label xml:lang="en">Organization Profile</rdfs:label>
+        <cids:hasName xml:lang="en">Organization Profile</cids:hasName>
+        <cids:hasDescription xml:lang="en">Contains additional profile data relevant to SFF that is applicable to both social purpose organizations (SPOs) and SFIs.</cids:hasDescription>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ontology.commonapproach.org/cids-3.0#forOrganization"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://ontology.commonapproach.org/cids-3.0#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPrimaryContact"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#Person"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+hasManagementTeamProfile
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasManagementTeamProfile"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="#TeamProfile"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasBoardProfile"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="#TeamProfile"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#sectorServed"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#localityServed"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#Locality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#provinceTerritoryServed"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#ProvinceTerritory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#primaryPopulationServed"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#PopulationServed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#organizationType"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#OrganizationType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#servesEDG"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#EquityDeservingGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasFundingStatus"/>
+                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#FundingStatus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#reportedDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ImpactReport">
+      <rdfs:label xml:lang="en">Impact Report</rdfs:label>
+      <cids:hasName xml:lang="en">Impact Report</cids:hasName>
+      <cids:hasDescription xml:lang="en">Provides definitive information on the time interval that a report covers, and can provide some contextual information about the report contents via the report name.</cids:hasDescription>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://ontology.commonapproach.org/cids-3.0#forOrganization"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://ontology.commonapproach.org/cids-3.0#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+      <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#startedAtTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+      <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#endedAtTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.eil.utoronto.ca/tove/organization#hasName"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+     </owl:Class>
+ 
+    <owl:Class rdf:about="#FundingStatus">
+      <rdfs:label xml:lang="en">Funding Status</rdfs:label>
+      <cids:hasName xml:lang="en">Funding Status</cids:hasName>
+      <cids:hasDescription xml:lang="en">Provides information on the status of an organization’s application to a funder or investor.</cids:hasDescription>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#reportedDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.eil.utoronto.ca/tove/organization#hasDescription"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#forOrganization"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="https://ontology.commonapproach.org/cids#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#forFunder"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasFundingState"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="#FundingState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="#TeamProfile">
+      <rdfs:label xml:lang="en">Team Profile</rdfs:label>
+      <cids:hasName xml:lang="en">Team Profile</cids:hasName>
+      <cids:hasDescription xml:lang="en">A profile of a board or management team for a specified interval of time.</cids:hasDescription>
+      <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#reportedDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+      </rdfs:subClassOf>
+      
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasTeamSize"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+         
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasEDGSize"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+
+      <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasEDGProfile"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="#EDGProfile"/>
+            </owl:Restriction>
+      </rdfs:subClassOf>
+      
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComment"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#EDGProfile">
+      <rdfs:label xml:lang="en">EDG Profile</rdfs:label>
+      <cids:hasName xml:lang="en">EDG Profile</cids:hasName>
+      <cids:hasDescription xml:lang="en">Information about the number of members belonging to a specific equity deserving group, as part of a board or management team, for a designated time interval.</cids:hasDescription>
+      <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#reportedDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+      </rdfs:subClassOf>
+      
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasSize"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#forEDG"/>
+                <owl:allValuesFrom rdf:resource="EquityDeservingGroup"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="#EquityDeservingGroup">
+      <rdfs:label xml:lang="en">Equity Deserving Group</rdfs:label>
+      <cids:hasName xml:lang="en">Equity Deserving Group</cids:hasName>
+      <cids:hasDescription xml:lang="en">Defines each of the equity deserving groups relevant to the management and board members of an organization.</cids:hasDescription>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasCharacteristic"/>
+                <owl:onDataRange rdf:resource="#Characteristic"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>      
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.eil.utoronto.ca/tove/organization#hasDescription"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isDefined"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>        
+    </owl:Class>
+    
+
+       
+</rdf:RDF>
