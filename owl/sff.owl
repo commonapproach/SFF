@@ -2,6 +2,9 @@
 <rdf:RDF xmlns="https://ontology.commonapproach.org/sff-1.0"
      xml:base="https://ontology.commonapproach.org/sff-1.0"
      xmlns:cids="https://ontology.commonapproach.org/cids"
+     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:void="http://rdfs.org/ns/void#"
+     xmlns:schema="https://schema.org/"
      xmlns:sff="https://ontology.commonapproach.org/sff-1.0"
      xmlns:cc="http://creativecommons.org/ns#"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -31,12 +34,19 @@
      xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="https://ontology.commonapproach.org/sff-1.0">
+        <rdf:type rdf:resource="http://purl.org/vocommons/voaf#Vocabulary"/>
         <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/ISO21972/iso21972.owl"/>
         <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/tove/activity.owl"/>
         <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/tove/icontact.owl"/>
         <owl:imports rdf:resource="http://ontology.eil.utoronto.ca/tove/organization.owl"/>
         <owl:imports rdf:resource="http://www.w3.org/2006/time.rdf"/>
-        <cc:license>Social Finance Fund Companion Module © 2023 by Common Approach to Impact Measurement is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/</cc:license>
+        <cc:license xml:lang="en">Social Finance Fund Companion Module © 2023 by Common Approach to Impact Measurement is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/</cc:license>
+        <cc:license rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
+        <vs:term_status xml:lang="en">Stable</vs:term_status>
+        <vs:term_status xml:lang="fr">Stable</vs:term_status>
+        <void:inDataset rdf:resource="#datasetdefinition"/>
+        <dcterms:rights xml:lang="en">Social Finance Fund Companion Module © 2023 by Common Approach to Impact Measurement is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/</dcterms:rights>
+        <dcterms:rights rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
         <dcterms:creator rdf:resource="https://ontology.commonapproach.org/cids#ac"/>
         <dcterms:description xml:lang="en">An Ontology for Representing Social Finance Fund Reporting Requirements</dcterms:description>
         <dcterms:title xml:lang="en">Social Finance Fund Companion Module</dcterms:title>
@@ -45,7 +55,24 @@
         <vann:preferredNamespaceUri>https://ontology.commonapproach.org/sff-1.0#</vann:preferredNamespaceUri>
         <dcterms:date>11-10-2024</dcterms:date>
         <owl:versionInfo xml:lang="en">1.0</owl:versionInfo>
+        <void:inDataset rdf:resource="#datasetdefinition"/>
     </owl:Ontology>
+
+    <void:Dataset rdf:about="#datasetdefinition">
+     <rdf:type rdf:resource="https://schema.org/Dataset"/>
+     <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+     <dcterms:rights rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
+     <dcterms:creator rdf:resource="https://ontology.commonapproach.org/cids#ac"/>
+     <dcterms:description xml:lang="en">An Ontology for Representing Social Finance Fund Reporting Requirements</dcterms:description>
+     <dcterms:title xml:lang="en">Social Finance Fund Companion Module</dcterms:title>
+     <foaf:name xml:lang="en">Social Finance Fund Companion Module</foaf:name>
+     <schema:license rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/"/>
+     <schema:license  xml:lang="en">Social Finance Fund Companion Module © 2023 by Common Approach to Impact Measurement is licensed under CC BY-SA 4.0. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/</schema:license>
+     <schema:creator  rdf:resource="https://ontology.commonapproach.org/cids#ac"/>
+     <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </void:Dataset>
+
+
 
     <owl:Class rdf:about="#OrganizationProfile">
       <rdfs:label xml:lang="en">Organization Profile</rdfs:label>
@@ -65,7 +92,6 @@
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-hasManagementTeamProfile
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#hasManagementTeamProfile"/>
@@ -73,8 +99,6 @@ hasManagementTeamProfile
                 <owl:onClass rdf:resource="#TeamProfile"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#hasBoardProfile"/>
@@ -82,57 +106,48 @@ hasManagementTeamProfile
                 <owl:onClass rdf:resource="#TeamProfile"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#sectorServed"/>
-                <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#"/>
+                <owl:allValuesFrom rdf:resource="#Sector"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#localityServed"/>
                 <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#Locality"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#provinceTerritoryServed"/>
                 <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#ProvinceTerritory"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#primaryPopulationServed"/>
                 <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#PopulationServed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#organizationType"/>
                 <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#OrganizationType"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#servesEDG"/>
                 <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#EquityDeservingGroup"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#hasFundingStatus"/>
                 <owl:allValuesFrom rdf:resource="https://ontology.commonapproach.org/cids-3.0#FundingStatus"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#reportedDate"/>
@@ -140,6 +155,8 @@ hasManagementTeamProfile
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <void:inDataset rdf:resource="#datasetdefinition"/>
+        <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
     </owl:Class>
 
     <owl:Class rdf:about="#ImpactReport">
@@ -188,13 +205,7 @@ hasManagementTeamProfile
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://ontology.eil.utoronto.ca/tove/organization#hasDescription"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#forceHasDescription"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#forOrganization"/>
@@ -216,6 +227,8 @@ hasManagementTeamProfile
                 <owl:onDataRange rdf:resource="#FundingState"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <void:inDataset rdf:resource="#datasetdefinition"/>
+        <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
     </owl:Class>
 
     <owl:Class rdf:about="#TeamProfile">
@@ -261,7 +274,75 @@ hasManagementTeamProfile
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <void:inDataset rdf:resource="#datasetdefinition"/>
+        <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>    
     </owl:Class>
+
+    <owl:Class rdf:about="#FundingState">
+      <rdfs:subClassOf rdf:resource="https://ontology.commonapproach.org/cids#CODE"/>
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+      <rdfs:label xml:lang="en">Funding State</rdfs:label>
+      <cids:hasName xml:lang="en">Funding State</cids:hasName>
+      <cids:hasDescription xml:lang="en">A value that reflect funding and approval process. The list items should distinguish concepts of ‘applied’, ‘rejected’, and ‘funded’.</cids:hasDescription>
+      <rdfs:subClassOf rdf:resource="#forceHasDescription"/>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </owl:Class>
+    
+    <sff:FundingState rdf:about="#applied">
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      <skos:inScheme rdf:resource="#FundingState"/>
+      <rdfs:label xml:lang="en">Applied</rdfs:label>
+      <cids:hasName xml:lang="en">Applied</cids:hasName>
+      <cids:hasDescription xml:lang="en">Funding proposal has been submitted.</cids:hasDescription>
+      <rdfs:label xml:lang="fr">Appliqué</rdfs:label>
+      <cids:hasName xml:lang="fr">Appliqué</cids:hasName>
+      <cids:hasDescription xml:lang="fr">La proposition de financement a été soumise.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </sff:FundingState>
+
+    <sff:FundingState rdf:about="#rejected">
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      <skos:inScheme rdf:resource="#FundingState"/>
+      <rdfs:label xml:lang="en">Rejected</rdfs:label>
+      <cids:hasName xml:lang="en">Rejected</cids:hasName>
+      <cids:hasDescription xml:lang="en">The funding proposal has been rejected.</cids:hasDescription>
+      <rdfs:label xml:lang="fr">Rejetée</rdfs:label>
+      <cids:hasName xml:lang="fr">Rejetée</cids:hasName>
+      <cids:hasDescription xml:lang="fr">La proposition de financement a été rejetée.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </sff:FundingState>
+
+    <sff:FundingState rdf:about="#funded">
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      <skos:inScheme rdf:resource="#FundingState"/>
+      <rdfs:label xml:lang="en">Funded</rdfs:label>
+      <cids:hasName xml:lang="en">Funded</cids:hasName>
+      <cids:hasDescription xml:lang="en">The funding proposal has been accepted and funding has been allocated.</cids:hasDescription>
+      <rdfs:label xml:lang="fr">Alloué</rdfs:label>
+      <cids:hasName xml:lang="fr">Alloué</cids:hasName>
+      <cids:hasDescription xml:lang="fr">La proposition de financement a été acceptée et le financement a été alloué.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </sff:FundingState>
+
+    <sff:FundingState rdf:about="#inReview">
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      <skos:inScheme rdf:resource="#FundingState"/>
+      <rdfs:label xml:lang="en">In Review</rdfs:label>
+      <cids:hasName xml:lang="en">In Review</cids:hasName>
+      <cids:hasDescription xml:lang="en">The funding proposal is being processed by the evaluating organization and is under review.</cids:hasDescription>
+      <rdfs:label xml:lang="fr">Sous-évaluation</rdfs:label>
+      <cids:hasName xml:lang="fr">Sous-évaluation</cids:hasName>
+      <cids:hasDescription xml:lang="fr">La proposition de financement est en cours de traitement par l’organisme évaluateur et est en cours d’examen.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </sff:FundingState>
+
+    
+
     
     <owl:Class rdf:about="#EDGProfile">
       <rdfs:label xml:lang="en">EDG Profile</rdfs:label>
@@ -302,13 +383,7 @@ hasManagementTeamProfile
                 <owl:onDataRange rdf:resource="#Characteristic"/>
             </owl:Restriction>
         </rdfs:subClassOf>      
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://ontology.eil.utoronto.ca/tove/organization#hasDescription"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#forceHasDescription"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#isDefined"/>
@@ -316,8 +391,74 @@ hasManagementTeamProfile
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>        
+        <void:inDataset rdf:resource="#datasetdefinition"/>
+        <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>        
     </owl:Class>
     
+    <owl:DatatypeProperty rdf:about="#hasTeamSize">
+      <rdfs:label xml:lang="en">Team Size</rdfs:label>
+      <cids:hasName xml:lang="en">Team Size</cids:hasName>
+      <cids:hasDescription xml:lang="en">Number of people on the team.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:DatatypeProperty>    
+
+    <owl:DatatypeProperty rdf:about="#hasCharacteristic">
+      <rdfs:label xml:lang="en">has Characteristic</rdfs:label>
+      <cids:hasName xml:lang="en">has Characteristic</cids:hasName>
+      <cids:hasDescription xml:lang="en">Specifies the group using a Characteristic. Links to one or more instances of Characteristic.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:DatatypeProperty>    
+
+    <owl:DatatypeProperty rdf:about="#isDefined">
+      <rdfs:label xml:lang="en">isDefined</rdfs:label>
+      <cids:hasName xml:lang="en">isDefined</cids:hasName>
+      <cids:hasDescription xml:lang="en">Specifies whether the equity deserving group is defined with reference to an external code. Its value is a single xsd:Boolean.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:DatatypeProperty>    
+
+
+    <owl:DatatypeProperty rdf:about="#hasEDGSize">
+      <rdfs:label xml:lang="en">EDG Size</rdfs:label>
+      <cids:hasName xml:lang="en">EDG Size</cids:hasName>
+      <cids:hasDescription xml:lang="en">Number of people on the team who are members of an equity deserving group.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:DatatypeProperty>    
+
+    <owl:DatatypeProperty rdf:about="#hasComment">
+      <rdfs:label xml:lang="en">Comment</rdfs:label>
+      <cids:hasName xml:lang="en">Comment</cids:hasName>
+      <cids:hasDescription xml:lang="en">Provides additional information about the team profile if needed.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:DatatypeProperty>    
+
+    <owl:DatatypeProperty rdf:about="#reportedDate">
+      <rdfs:label xml:lang="en">Reported Date</rdfs:label>
+      <cids:hasName xml:lang="en">Reported Date</cids:hasName>
+      <cids:hasDescription xml:lang="en">Specifies the date to which the reported information applies.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:DatatypeProperty>    
+
+    <owl:ObjectProperty rdf:about="#hasEDGProfile">
+      <rdfs:label xml:lang="en">EDG Profile</rdfs:label>
+      <cids:hasName xml:lang="en">EDG Profile</cids:hasName>
+      <cids:hasDescription xml:lang="en">Profiles each of the EDG groups that are present on the management team. Links to one or more instances of EDGProfile.</cids:hasDescription>
+      <void:inDataset rdf:resource="#datasetdefinition"/>
+      <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/> 
+    </owl:ObjectProperty>    
+
+
+    <owl:Restriction rdf:about="#forceHasDescription">
+      <owl:onProperty rdf:resource="https://ontology.commonapproach.org/cids#hasDescription"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+      <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:Restriction>
+
 
        
 </rdf:RDF>
