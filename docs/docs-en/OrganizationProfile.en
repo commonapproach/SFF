@@ -1,0 +1,16 @@
+<p>An OrganizationProfile is linked from the Organization class. It contains additional profile data relevant to SFF that is applicable to both social purpose organizations (SPOs) and SFIs. The only difference in implementation is that SFIs are not required to populate data in the “hasBoardProfile” property. 
+A profile instance defines information reported at a specific time. Hence an organization may have multiple profile instances.</p>
+<p>The following properties are defined for the Organization Profile:</p>
+<ul>
+<li><tt>hasPrimaryContact</tt>: This is the primary contact name and email of the organization. Links to an instance of Person.
+<li><tt>hasManagementTeamProfile</tt>: Profile of the organization's Management Team. Links to one or more instances of TeamProfile.
+<li><tt>hasBoardProfile</tt>: Profile of the organization's Board of Directors. Links to one or more instances of TeamProfile. Not required by SFF for SFI’s own reports. 
+<li><tt>sectorServed</tt>: Identifies one or more sectors served by the organization. Links to one or more instances of Sector.
+<li><tt>localityServed</tt>: Identifies one or more localities served by the organization. Links to one or more instances of Locality.
+<li><tt>provinceTerritoryServed</tt>: Identifies one or more provinces and/or territories served by the SPO. Links to one or more instances of ProvinceTerritory (code list).
+<li><tt>primaryPopulationServed</tt>: Identifies one or more populations served by the SPO. Links to one or more instances of PopulationServed (code list).
+<li><tt>organizationType</tt>: Identifies the type of Organization. Links to a single instance of OrganizationType (code list).
+<li><tt>servesEDG</tt>: Profiles each of the equity deserving groups that the organization serves. Links to one or more instances of EquityDeservingGroup.
+<li><tt>hasFundingStatus</tt>: Identifies the funding applications of the organization. Links to one or more instances of FundingStatus.
+<li><tt>reportedDate</tt>: Specifies the date to which the reported information applies. 
+</ul>

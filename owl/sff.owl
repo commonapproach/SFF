@@ -79,11 +79,6 @@
         <cids:hasName xml:lang="en">Organization Profile</cids:hasName>
         <cids:hasDescription xml:lang="en">Contains additional profile data relevant to SFF that is applicable to both social purpose organizations (SPOs) and SFIs.</cids:hasDescription>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://ontology.commonapproach.org/cids-3.0#forOrganization"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://ontology.commonapproach.org/cids-3.0#Organization"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -159,17 +154,22 @@
         <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
     </owl:Class>
 
+    <owl:Class rdf:about="#Sector">
+      <rdfs:label xml:lang="en">Sector</rdfs:label>
+      <cids:hasName xml:lang="en">Sector</cids:hasName>
+      <cids:hasDescription xml:lang="en">Sectors provide a high-level view of an organization's core focus and the general type of activities it conducts, helping to standardize its profile within the broader landscape of similar entities.</cids:hasDescription>
+        <rdfs:subClassOf rdf:resource="#forceHasOrganization"/>
+        <void:inDataset rdf:resource="#datasetdefinition"/>
+        <rdfs:isDefinedBy rdf:resource="https://ontology.commonapproach.org/sff-1.0"/>
+    </owl:Class>
+
+
+
     <owl:Class rdf:about="#ImpactReport">
       <rdfs:label xml:lang="en">Impact Report</rdfs:label>
       <cids:hasName xml:lang="en">Impact Report</cids:hasName>
       <cids:hasDescription xml:lang="en">Provides definitive information on the time interval that a report covers, and can provide some contextual information about the report contents via the report name.</cids:hasDescription>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://ontology.commonapproach.org/cids-3.0#forOrganization"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://ontology.commonapproach.org/cids-3.0#Organization"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+      <rdfs:subClassOf rdf:resource="#forceHasOrganization"/>
       <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/prov#startedAtTime"/>
@@ -206,13 +206,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf rdf:resource="#forceHasDescription"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="#forOrganization"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="https://ontology.commonapproach.org/cids#Organization"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#forceHasOrganization"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="#forFunder"/>
@@ -458,7 +452,11 @@
       <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
       <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:Restriction>
-
+    <owl:Restriction rdf:about="#forceHasDescription">
+                <owl:onProperty rdf:resource="https://ontology.commonapproach.org/cids-3.0#forOrganization"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://ontology.commonapproach.org/cids-3.0#Organization"/>
+            </owl:Restriction>
 
        
 </rdf:RDF>
